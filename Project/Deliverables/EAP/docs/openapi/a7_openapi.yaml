@@ -1,0 +1,1647 @@
+openapi: 3.0.0
+
+info:
+  version: '1.0'
+  title: 'SportsVerse Web API'
+  description: 'Web Resources Specification (A7) for SportsVerse'
+
+servers:
+- url: http://lbaw.fe.up.pt
+  description: Production server
+
+tags:
+  - name: 'M01: Authentication and Individual Profile'
+  - name: 'M02: Products and Categories'
+  - name: 'M03: Management Area'
+  - name: 'M04: Product Reviews'
+  - name: 'M05: Static pages'
+  - name: 'M06: Cart and Wishlist'
+
+paths:
+  /login:
+    get:
+      operationId: R101
+      summary: 'R101: Login Form'
+      description: 'Provide login form. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '200':
+          description: 'Ok. Show log-in UI'
+    post:
+      operationId: R102
+      summary: 'R102: Login Action'
+      description: 'Processes the login form submission. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+ 
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:          # <!--- form field name
+                  type: string
+                password:    # <!--- form field name
+                  type: string
+              required:
+                - email
+                - password
+ 
+      responses:
+        '302':
+          description: 'Redirect after processing the login credentials.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful authentication. Redirect to home page.'
+                  value: '/homepage'
+                302Error:
+                  description: 'Failed authentication. Redirect to login form.'
+                  value: '/login' 
+ 
+  /logout:
+
+    post:
+      operationId: R103
+      summary: 'R103: Logout Action'
+      description: 'Logout the current authenticated user. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '302':
+          description: 'Redirect after processing logout.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful logout. Redirect to home page.'
+                  value: '/home'
+
+  /register:
+    get:
+      operationId: R104
+      summary: 'R104: Register Form'
+      description: 'Provide new user registration form. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '200':
+          description: 'Ok. Show sign-up UI'
+
+    post:
+      operationId: R105
+      summary: 'R105: Register Action'
+      description: 'Processes the new user registration form submission. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                birthdate:
+                  type: date
+                address:
+                  type: string
+                phone_number:
+                  type: number
+                  
+              required:
+                - name
+                - email
+                - password
+                - birthdate
+                - address
+                - phone_number
+
+      responses:
+        '302':
+          description: 'Redirect after processing the new user information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful authentication. Redirect to home page.'
+                  value: '/homepage'
+                302Failure:
+                  description: 'Failed authentication. Redirect to register form.'
+                  value: '/register'
+
+  /profile:
+    get:
+      operationId: R106
+      summary: 'R106: View user profile'
+      description: 'Show the individual user profile. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+
+      responses:
+        '200':
+          description: 'Ok. Show view profile UI'
+  
+  /profile/edit:
+    get:
+      operationId: R107
+      summary: 'R107: View the users edit form'
+      description: 'Provide edit user information form. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+
+      responses:
+        '200':
+          description: 'Ok. Show edit form UI'
+    post:
+      operationId: R108
+      summary: 'R108: Edit user profile Action'
+      description: 'Processes the provided user information. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+ 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                password:
+                  type: string
+                birthdate:
+                  type: date
+                address:
+                  type: string
+                phone_number:
+                  type: number
+              example:
+                - name: "gandimpt"
+                  password: "yo soy gandin"
+                  address: "bairro do cerco como é obvio"
+                  birthdate: "2008-10-10"
+                  phonenumber: "91239129129"
+ 
+      responses:
+        '302':
+          description: 'Redirect after processing the updated user information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successfully updated the profile. Redirect to profile page.'
+                  value: '/profile'
+                302Error:
+                  description: 'Failed update profile. Redirect to the edit form.'
+                  value: '/profile/edit'
+
+  /homepage:
+    get:
+      operationId: R201
+      summary: 'R201: Homepage'
+      description: 'Get products to display on the homepage. Access: PUB.'
+      tags:
+        - 'M02: Products and Categories'
+      responses:
+        '200':
+            description: "OK. Show home page"
+        '500':
+          description: 'Error showing Home Page'
+
+  /category:
+    get:
+      operationId: R202
+      summary: 'R202: Product categories'
+      description: 'Shows all the product categories available. Access: PUB.'
+      tags:
+        - 'M02: Products and Categories'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                example:
+                  - id: 1
+                    name: Protein
+                  - id: 2
+                    name: Whey
+        '500':
+          description: 'Error showing Home Page'
+
+  /products/category/{id_category}:
+    get:
+      operationId: R203
+      summary: 'R203: Product subcategories'
+      description: 'Shows all the product subcategories available. Access: PUB.'
+      tags:
+        - 'M02: Products and Categories'
+      parameters:
+        - in: path
+          name: id_category
+          required: true
+          description: id of the category we want to see
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    id_category:
+                      type: string
+                example:
+                  - id: 1
+                    name: Protein
+                    id_category: 2
+                  - id: 2
+                    name: Whey
+                    id_category: 1
+        '404':
+          description: 'Category not found'
+  
+  /products/subcategory/{id_subcategory}:
+    get:
+      operationId: R204
+      summary: 'R204: Products'
+      description: 'Shows all the products available. Access: PUB.'
+      tags:
+        - 'M02: Products and Categories'
+      parameters:
+        - in: path
+          name: id_subcategory
+          required: true
+          description: id of the subcategory we want to see
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    short_description:
+                      type: string
+                    long_description:
+                      type: string
+                    rating:
+                      type: number
+                    manufactor:
+                      type: string
+                    id_sub_category:
+                      type: string
+                example:
+                  - id: 1
+                    name: Zero-diet Protein
+                    short_description: Good for those who are on a diet plan and want to gain muscle.
+                    long_description: Good for those who are on a diet plan and want to gain muscle.
+                    rating: 4
+                    manufactor: Prozis
+                    id_sub_category: 3
+                  - id: 5
+                    name: Protein Bar
+                    short_description: Healthy snack to eat after training.
+                    long_description: Healthy snack to eat after training.
+                    rating: 3
+                    manufactor: Prozis
+                    id_sub_category: 4
+        '404':
+          description: 'Subcategory not found'
+
+  /product/{id_product}:
+    get:
+      operationId: R205
+      summary: 'R205: Product'
+      description: 'Shows the product page. Access: PUB.'
+      tags:
+        - 'M02: Products and Categories'
+      parameters:
+        - in: path
+          name: id_product
+          required: true
+          description: id of the product we want to see
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  id_product:
+                    type: integer
+                  stock:
+                    type: integer
+                  price:
+                    type: number
+                  id_size:
+                    type: number
+                  id_color:
+                    type: string
+              example:
+                  - id: 1
+                    id_product: 1
+                    stock: 7
+                    price: 29.99
+                    id_size: 4
+                    id_color: 3
+                  - id: 5
+                    id_product: 3
+                    stock: 4
+                    price: 14.99
+                    id_size: 3
+                    id_color: 2
+        '404':
+          description: 'Subcategory not found'
+      
+  /search:
+    get:
+      operationId: R206
+      summary: 'R206: Search Product Mechanism'
+      description: 'Searches products similar to the name given - can be accessed anywhere on the website. Access: PUB.'
+
+      tags:
+        - 'M02: Products and Categories'
+
+      parameters:
+        - in: query
+          name: query
+          description: String to use for full-text search
+          schema:
+            type: string
+
+      responses:
+        '200':
+          description: 'Success. Show Search UI'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    short_description:
+                      type: string
+                    long_description:
+                      type: string
+                    rating:
+                      type: number
+                    manufactor:
+                      type: string
+                    id_sub_category:
+                      type: string
+                example:
+                  - id: 1
+                    name: Zero-diet Protein
+                    short_description: Good for those who are on a diet plan and want to gain muscle.
+                    long_description: Good for those who are on a diet plan and want to gain muscle.
+                    rating: 4
+                    manufactor: Prozis
+                    id_sub_category: 3
+                  - id: 5
+                    name: Protein Bar
+                    short_description: Healthy snack to eat after training.
+                    long_description: Healthy snack to eat after training.
+                    rating: 3
+                    manufactor: Prozis
+                    id_sub_category: 4
+        '400':
+          description: 'Exception message'
+
+  /about:
+    get:
+      operationId: R501
+      summary: 'R501: About Page'
+      description: 'Show About Page. Access: PUB'
+      tags:
+        - 'M05: Static pages'
+      responses:
+        '200':
+          description: 'Ok. Show about page UI'
+
+  /services:
+    get:
+      operationId: R502
+      summary: 'R502: Consult Services'
+      description: 'Show the services available. Access: PUB'
+      tags:
+        - 'M05: Static pages'
+      responses:
+        '200':
+          description: 'Ok. Show Services UI'
+
+  /faq:
+    get:
+      operationId: R503
+      summary: 'R503: Consult FAQ'
+      description: 'Show FAQs List. Access: PUB'
+      tags:
+        - 'M05: Static pages'
+      responses:
+        '200':
+          description: 'Ok. Show FAQ UI'
+
+  /contacts:
+    get:
+      operationId: R504
+      summary: 'R504: See Contacts available'
+      description: 'Show Contacts List. Access: PUB'
+      tags:
+        - 'M05: Static pages'
+      responses:
+        '200':
+          description: 'Ok. Show Contacts UI'
+
+
+  /shopping_cart:
+    get:
+      operationId: R601
+      summary: 'R601: View Products from cart'
+      description: 'Provide products on the users cart. Access: PUB'
+      tags:
+        - 'M06: Cart and Wishlist'
+      responses:
+        '200':
+          description: 'Ok. Show shopping cart UI'
+        '500':
+          description: 'Error showing shopping cart'
+    post:
+      operationId: R602
+      summary: 'R602: Add product to cart'
+      description: 'Processes the new product to be added to the cart. Access: USR'
+      tags:
+        - 'M06: Cart and Wishlist'
+      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:          
+                  type: integer
+                quantity:             
+                  type: integer
+              required:
+                - id_prod_var
+                - quantity
+              example:
+                - id_prod_var = 1
+                - quantity = 3
+      responses:
+        '500':
+          description: 'You already have this product in your cart or An administrator account can not add products to cart'
+        '400':
+          description: 'Error adding product to shopping cart'
+        '200':
+          description: 'Product added to Cart'
+        '404':
+          description: 'That product does not exist or it is not available'
+
+    delete:
+      operationId: R603
+      summary: 'R603: Remove product from cart'
+      description: 'Removes product from the cart the cart. Access: USR'
+      tags:
+        - 'M06: Cart and Wishlist'
+      
+      responses:
+        '500':
+          description: Error removing product from cart
+        '200':
+          description: 'Product deleted from cart'
+        '404':
+          description: 'The product is not in your cart'
+
+    put:
+      operationId: R604
+      summary: 'R604: Update product quantity in cart'
+      description: 'Updates the quantity of the product on the cart. Access: USR'
+      tags:
+        - 'M06: Cart and Wishlist'
+      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:          
+                  type: integer
+                quantity:             
+                  type: integer
+              required:
+                - id
+                - quantity
+                
+              example:
+                  - id: 1
+                    quantity: 2
+                  - id: 2
+                    quantity: 3
+                
+      responses:
+        '400':
+          description: 'Error updating product from cart'
+        '200':
+          description: 'Your product quantity was updated'
+        '500':
+          description: 'There are not enough available products'
+
+  /checkout:
+    post:
+      operationId: R605
+      summary: 'R206: Checkout'
+      description: 'Makes a purchase. Access: USR'
+      tags:
+        - 'M06: Cart and Wishlist'
+
+      responses:
+        '302':
+          description: 'Redirects after checkout.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Expedition done successfuly. Redirect to homepage.'
+                  value: '/homepage'
+                302Error:
+                  description: 'Failed to dispatch purchase. Redirect to homepage.'
+                  value: '/homepage'
+        '401':
+          description: 'You are not able to checkout.'
+        '500':
+          description: 'An administrator account can not checkout or Something went wrong checking out'
+
+  /expedition:
+    post:
+      operationId: R606
+      summary: 'R606: Make Expedition'
+      description: 'Makes the purchase expedition. Access: USR'
+      tags:
+        - 'M06: Cart and Wishlist'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                delivery_date:                 # <!--- form field name
+                  type: date
+              required:
+                - delivery_address
+              example:
+                - delivery_address = Contumil city
+
+      responses:
+        '302':
+          description: 'Redirects after expedition.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Expedition done successfuly. Redirect to user page.'
+                  value: '/user/{id_user}'
+                302Error:
+                  description: 'Failed to dispatch purchase. Redirect to user page.'
+                  value: '/user/{id_user}'
+
+  /wishlist:
+    post:
+      operationId: R607
+      summary: 'R607: Add product to wishlist'
+      description: 'Processes the new product to be added to the wishlist. Access: USR'
+      tags:
+        - 'M06: Cart and Wishlist'
+      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_prod_var:          
+                  type: integer
+              required:
+                - id_prod_var
+              example:
+                - id_prod_var = 2
+      responses:
+        '500':
+          description: 'You already have this product in your wishlist or An administrator account can not add products to wishlist'
+        '400':
+          description: 'Error adding product to shopping wishlist'
+        '200':
+          description: 'Product added to wishlist'
+        '404':
+          description: 'That product does not exist or it is not available'
+
+    delete:
+      operationId: R608
+      summary: 'R608: Remove product from wishlist'
+      description: 'Removes product from the wishlist. Access: USR'
+      tags:
+        - 'M06: Cart and Wishlist'
+      
+      responses:
+        '500':
+          description: 'Error removing product from wishlist'
+        '200':
+          description: 'Product deleted from wishlist'
+        '404':
+          description: 'The product is not in your wishlist'
+
+  
+  /admin:
+    get:
+      operationId: R301
+      summary: 'R301: View administration Page'
+      description: 'Show the administration Page. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      responses:
+        '200':
+          description: 'Ok. Show administraton UI'
+
+  /user/{id}:
+    get:
+      operationId: R302
+      summary: 'R302: View a specific user profile'
+      description: 'Show a specific profile. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      parameters:
+       - in: path
+         name: id
+         schema:
+           type: integer
+         required: true
+         description: 'Target user id'
+
+      responses:
+        '200':
+          description: 'Ok. Show view profile UI'
+        '404':
+          description: 'Error. Profile not found'
+
+  /user/{id}/edit:    
+    get:
+      operationId: R303
+      summary: 'R303: View the specific user edit form'
+      description: 'Provide edit user information form. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      parameters:
+       - in: path
+         name: id
+         schema:
+           type: integer
+         required: true
+         description: 'Target user id'
+
+      responses:
+        '200':
+          description: 'Ok. Show edit form UI'
+        '404':
+          description: 'Error. Profile not found'
+    post:
+      operationId: R304
+      summary: 'R304: Edit a specific user profile Action'
+      description: 'Processes the provided user information. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+        
+      parameters:
+       - in: path
+         name: id
+         schema:
+           type: integer
+         required: true
+         description: 'Target user id'
+ 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                birthdate:
+                  type: date
+                address:
+                  type: string
+                phone_number:
+                  type: number
+              example:
+                - name: "gandimpt"
+                  address: "bairro do cerco como é obvio"
+                  birthdate: "2008-10-10"
+                  phonenumber: "91239129129"
+ 
+      responses:
+        '302':
+          description: 'Redirect after processing the updated user information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successfully updated the profile. Redirect to profile page.'
+                  value: '/user/{id}'
+                302Error:
+                  description: 'Failed update profile. Redirect to the edit form.'
+                  value: '/user/{id}/edit'
+
+  /admin/purchases:
+    get:
+      operationId: R305
+      summary: 'R305: View all purchases made'
+      description: 'Show all purchases made. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      responses:
+        '200':
+          description: 'Ok. Show view purchases UI'
+
+  /admin/purchase/{id}:
+    get:
+      operationId: R306
+      summary: 'R306: View a purchase made'
+      description: 'Show a purchase made. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      parameters:
+       - in: path
+         name: id
+         schema:
+           type: integer
+         required: true
+         description: 'Target user id'
+
+      responses:
+        '200':
+          description: 'Ok. Show view purchase UI'
+        '404':
+          description: 'Error. Purchase not found'
+
+    post:
+      operationId: R307
+      summary: 'R307: Update purchase state Action'
+      description: 'Processes updated purchase state. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+        
+      parameters:
+       - in: path
+         name: id
+         schema:
+           type: integer
+         required: true
+         description: 'Target user id'
+ 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                pur_status:
+                  type: string
+              required:
+                - pur_status
+              example:
+                - pur_status = Concluded
+
+      responses:
+        '302':
+          description: 'Redirect after processing the updated purchase state.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successfully updated purchase state. Redirect to purchases page.'
+                  value: '/purchases'
+                302Error:
+                  description: 'Failed to update purchase state. Redirect to the purchase page.'
+                  value: '/purchase/{id}'
+  
+  /admin/category:
+    post:
+      operationId: R308
+      summary: 'R308: Add category Action'
+      description: 'Adds a new category to the website. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+ 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+                - name
+              example:
+                - name = Protein
+
+      responses:
+        '302':
+          description: 'Redirect after processing the new category.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successfully created category. Redirect to admin page.'
+                  value: '/admin'
+                302Error:
+                  description: 'Failed to create category. Redirect to the add category page.'
+                  value: '/admin/category'
+    delete:
+      operationId: R309
+      summary: 'R309: Delete category Action'
+      description: 'Delete a category from the website. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      responses:
+        '200':
+          description: 'Ok. Category sucessfuly deleted'
+        '404':
+          description: 'Error. Category not found'
+          
+  /admin/subcategory:
+    post:
+      operationId: R310
+      summary: 'R310: Add sub category Action'
+      description: 'Adds a new sub category to the website. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+ 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_category:
+                  type: integer
+                name:
+                  type: string
+              required:
+                - id_category
+                - name
+              example:
+                - id_category = 3
+                - name = Natural Whey Protein
+              description: id of the mother category and name of the new sub category
+
+      responses:
+        '302':
+          description: 'Redirect after processing the new sub category.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successfully created sub category. Redirect to admin page.'
+                  value: '/admin'
+                302Error:
+                  description: 'Failed to create sub category. Redirect to the add sub category page.'
+                  value: '/admin/subcategory'
+        '404':
+          description: 'Error. Category not found'
+    delete:
+      operationId: R311
+      summary: 'R311: Delete sub category Action'
+      description: 'Delete a sub category from the website. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      responses:
+        '200':
+          description: 'Ok. Sub category sucessfuly deleted'
+        '404':
+          description: 'Error. Sub category not found'
+
+  /admin/product:
+    post:
+      operationId: R312
+      summary: 'R312: Add product Action'
+      description: 'Adds a new product to the website. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+ 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                short_description:
+                  type: string
+                long_description:
+                  type: string
+                manufacturer:
+                  type: string
+                id_subcategory:
+                  type: integer
+              required:
+                - name
+                - short_description
+                - long_description
+                - manufacturer
+                - id_subcategory
+
+      responses:
+        '302':
+          description: 'Redirect after processing the new product.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successfully created product. Redirect to admin page.'
+                  value: '/admin'
+                302Error:
+                  description: 'Failed to create product. Redirect to the add product page.'
+                  value: '/admin/product'
+
+    delete:
+      operationId: R313
+      summary: 'R313: Delete product Action'
+      description: 'Delete a product from the website. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      responses:
+        '200':
+          description: 'Ok. Product sucessfuly deleted'
+        '404':
+          description: 'Error. Product not found'
+
+    put:
+      operationId: R314
+      summary: 'R314: Update product Action'
+      description: 'Update a product from the website. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+ 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                short_description:
+                  type: string
+                long_description:
+                  type: string
+                manufacturer:
+                  type: string
+                id_subcategory:
+                  type: integer
+
+      responses:
+        '200':
+          description: 'Ok. Product sucessfuly updated'
+        '404':
+          description: 'Error. Product not found'
+
+  /admin/productvariation:
+    post:
+      operationId: R315
+      summary: 'R315: Add product variation Action'
+      description: 'Adds a new product variation to the website. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+ 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_prod:
+                  type: integer
+                stock:
+                  type: number
+                price:
+                  type: number
+                id_size:
+                  type: integer
+                id_color:
+                  type: integer
+              required:
+                - id_prod
+                - stock
+                - price
+                - id_size
+                - id_color
+              example:
+                - id_prod = 2
+                - stock = 3
+                - price = 29.99
+                - id_size = 1
+                - id_color = 1
+
+      responses:
+        '302':
+          description: 'Redirect after processing the new product variation.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successfully created product variation. Redirect to admin page.'
+                  value: '/admin'
+                302Error:
+                  description: 'Failed to create product variation. Redirect to the add product variation page.'
+                  value: '/admin/productvariation'
+
+    delete:
+      operationId: R316
+      summary: 'R316: Delete product variation Action'
+      description: 'Delete a product variation from the website. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      responses:
+        '200':
+          description: 'Ok. Product variation sucessfuly deleted'
+        '404':
+          description: 'Error. Product variation not found'
+
+  /admin/productvariation/{id}:
+    get:
+      operationId: R317
+      summary: 'R317: View the product form'
+      description: 'Show the product form. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      parameters:
+       - in: path
+         name: id
+         schema:
+           type: integer
+         required: true
+         description: 'Product variation id'
+
+      responses:
+        '200':
+          description: 'Ok. Show product form UI'
+        '404':
+          description: 'Error. Purchase not found'
+
+    post:
+      operationId: R318
+      summary: 'R318: Update product variation Action'
+      description: 'Update a product variation from the website. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+      
+      parameters:
+       - in: path
+         name: id
+         schema:
+           type: integer
+         required: true
+         description: 'Product variation id'
+ 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                price:
+                  type: number
+                id_size:
+                  type: integer
+                id_color:
+                  type: integer
+
+      responses:
+        '200':
+          description: 'Ok. Product sucessfuly updated'
+        '404':
+          description: 'Error. Product not found'
+
+  /admin/expeditions:
+    get:
+      operationId: R319
+      summary: 'R319: View all expeditions made'
+      description: 'Show all expeditions made. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      responses:
+        '200':
+          description: 'Ok. Show view expeditions UI'
+
+  /admin/expedition:
+    get:
+      operationId: R320
+      summary: 'R320: View a expedition form'
+      description: 'Show a expedition form. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      responses:
+        '200':
+          description: 'Ok. Show view expedition form UI'
+
+    post:
+      operationId: R321
+      summary: 'R321: Create expedition Action'
+      description: 'Processes created expedition.  Access: ADM'
+      tags:
+        - 'M03: Management Area'
+ 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                purchase_id:
+                  type: integer
+                delivery_date:
+                  type: date
+                delivery_address:
+                  type: string
+                shipping_cost:
+                  type: number
+                exp_status:
+                  type: string
+              required:
+                - purchase_id
+                - delivery_date
+                - delivery_address
+                - shipping_cost
+                - exp_status
+              example:
+                - purchase_id = 3
+                - delivery_date = 2022-12-01
+                - delivery_address = Cerco outra vez
+                - shipping_cost = 3.49
+                - exp_status = Shipping
+
+      responses:
+        '302':
+          description: 'Redirect after processing the expedition.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successfully created expedition. Redirect to admin.'
+                  value: '/admin'
+                302Error:
+                  description: 'Failed to create expedition. Redirect to the expedition form page.'
+                  value: '/admin/expedition'
+ 
+  /admin/expedition/{id}:
+    get:
+      operationId: R322
+      summary: 'R322: View a expedition'
+      description: 'Show a expedition. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      parameters:
+       - in: path
+         name: id
+         schema:
+           type: integer
+         required: true
+         description: 'Product variation id'
+
+      responses:
+        '200':
+          description: 'Ok. Show view expedition UI'
+        '404':
+          description: 'Error. Expedition not found'
+
+    post:
+      operationId: R323
+      summary: 'R323: Update expedition state Action'
+      description: 'Processes updated expedition state. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+        
+      parameters:
+       - in: path
+         name: id
+         schema:
+           type: integer
+         required: true
+         description: 'Product variation id'
+         
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                exp_status:
+                  type: string
+                shipping_cost:
+                  type: number
+              required:
+                - exp_status
+
+      responses:
+        '302':
+          description: 'Redirect after processing the updated expedition state.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successfully updated expedition state. Redirect to expeditions page.'
+                  value: '/expeditions'
+                302Error:
+                  description: 'Failed to update expedition state. Redirect to the expedition page.'
+                  value: '/expedition/{id}'
+ 
+  /admin/faq:
+    get:
+      operationId: R324
+      summary: 'R324: View the faq'
+      description: 'Show the faq. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      responses:
+        '200':
+          description: 'Ok. Show faq UI'
+
+    post:
+      operationId: R325
+      summary: 'R325: Update faq Action'
+      description: 'Processes updated faq.  Access: ADM'
+      tags:
+        - 'M03: Management Area'
+ 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+              required:
+                - text
+              example:
+                - text = We dont accept bitcoins
+
+      responses:
+        '302':
+          description: 'Redirect after updating the faq.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successfully updated faq. Redirect to admin.'
+                  value: '/admin'
+                302Error:
+                  description: 'Failed to update faq. Redirect to the faq page.'
+                  value: '/admin/faq'
+ 
+  /admin/services:
+    get:
+      operationId: R326
+      summary: 'R326: View the services'
+      description: 'Show the services. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      responses:
+        '200':
+          description: 'Ok. Show services UI'
+
+    post:
+      operationId: R327
+      summary: 'R327: Update services Action'
+      description: 'Processes updated services.  Access: ADM'
+      tags:
+        - 'M03: Management Area'
+ 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+              required:
+                - text
+              example:
+                - text = We sell, we profit, you lose money, easy
+
+      responses:
+        '302':
+          description: 'Redirect after updating the services.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successfully updated services. Redirect to admin.'
+                  value: '/admin'
+                302Error:
+                  description: 'Failed to update services. Redirect to the services page.'
+                  value: '/admin/services'
+
+  /admin/about:
+    get:
+      operationId: R328
+      summary: 'R328: View the about'
+      description: 'Show the about. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      responses:
+        '200':
+          description: 'Ok. Show about UI'
+
+    post:
+      operationId: R329
+      summary: 'R329: Update about Action'
+      description: 'Processes updated about.  Access: ADM'
+      tags:
+        - 'M03: Management Area'
+ 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+              required:
+                - text
+              example:
+                - text = We are a proud group of sellers... or scammers?
+
+      responses:
+        '302':
+          description: 'Redirect after updating the about.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successfully updated about. Redirect to admin.'
+                  value: '/admin'
+                302Error:
+                  description: 'Failed to update about. Redirect to the about page.'
+                  value: '/admin/about'
+
+  /admin/review:
+    get:
+      operationId: R330
+      summary: 'R330: View a user review'
+      description: 'Show the user review. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      responses:
+        '200':
+          description: 'Ok. Show review form UI'
+          
+    delete:
+      operationId: R331
+      summary: 'R331: Delete a users review Action'
+      description: 'Delete a review from a user. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+
+      responses:
+        '200':
+          description: 'Ok. Review sucessfuly deleted'
+        '404':
+          description: 'Error. Review not found'
+
+    put:
+      operationId: R332
+      summary: 'R332: Update a users review Action'
+      description: 'Update a review from a user. Access: ADM'
+      tags:
+        - 'M03: Management Area'
+ 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+
+      responses:
+        '200':
+          description: 'Ok. Review sucessfuly updated'
+        '404':
+          description: 'Error. Product not found'
+
+ 
+ 
+  /review:
+    get:
+      operationId: R401
+      summary: 'R401: View the review form'
+      description: 'Show the review form. Access: USR'
+      tags:
+        - 'M04: Product Reviews'
+
+      responses:
+        '200':
+          description: 'Ok. Show review form UI'
+          
+    post:
+      operationId: R402
+      summary: 'R402: Add review Action'
+      description: 'Adds a new review to a product bought. Access: USR'
+      tags:
+        - 'M04: Product Reviews'
+ 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rating:
+                  type: number
+                comment:
+                  type: string
+              required:
+                - rating
+                - comment
+              example:
+                - rating = 5
+                - comment = Very good, I don't recommend
+
+      responses:
+        '302':
+          description: 'Redirect after reviewing the bought product.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successfully reviewed. Redirect to profile page.'
+                  value: '/profile'
+                302Error:
+                  description: 'Failed to review product. Redirect to the review form page.'
+                  value: '/review{id}'
+
+    delete:
+      operationId: R403
+      summary: 'R403: Delete review Action'
+      description: 'Delete a review from a product bought. Access: USR'
+      tags:
+        - 'M04: Product Reviews'
+
+      responses:
+        '200':
+          description: 'Ok. Review sucessfuly deleted'
+        '404':
+          description: 'Error. Review not found'
+
+    put:
+      operationId: R404
+      summary: 'R404: Update review  Action'
+      description: 'Update a review from a product bought. Access: USR'
+      tags:
+        - 'M04: Product Reviews'
+ 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rating:
+                  type: number
+                comment:
+                  type: string
+              example:
+                - rating = 1
+                - comment = Very good
+
+      responses:
+        '200':
+          description: 'Ok. Review sucessfuly updated'
+        '404':
+          description: 'Error. Product not found'

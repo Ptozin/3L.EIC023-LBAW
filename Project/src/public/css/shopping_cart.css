@@ -1,0 +1,128 @@
+#end_shopping_cart{
+    font-weight: bold;
+}
+
+.shopping-cart-item a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.groupboth {
+    display: flex;
+}
+
+.groupboth img {
+    flex: 1;
+}
+
+.payment_method {
+    flex: 2;
+    padding: 40px 30px 50px 30px;
+    background: #fff;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.1);
+  }
+  
+  .payment_method form {
+    width: 100%;
+  }
+
+  .payment_method header{
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom: 1em;
+  }
+
+  form .input-area{
+    height: 50px;
+    width: 100%;
+    position: relative;
+  }
+
+  .payment_method .debitbtn {
+    margin-left: 2em;
+  }
+
+  .payment_method .checkoutbtn {
+    width: 100%;
+  }
+
+  .pforcheckbtn {
+    width: 100%;
+  }
+
+  .payment_method form input#checkoutbtn {
+    
+    outline: none;
+    padding: 0 45px;
+    font-size: 18px;
+    caret-color: #212529;
+    margin-top: 0;
+
+    transition: all 0.2s ease;
+  }
+
+
+
+  @media screen and (max-width: 1000px) {
+  
+    .groupboth {
+        display: inline-block;
+    }
+    
+    .groupboth img {
+        display: none;
+    }
+
+
+  }
+
+  div.section-container div.shopping-cart-item {
+    display: static;
+  }
+
+  @media screen and (max-width: 767px) {
+  
+    div.container div.section-container div.shopping-cart-item {
+        display: flex;
+      }
+    #littleimg {
+        flex: 1;
+    }
+    #prodspecif{
+        flex: 3;
+    }
+
+
+  }
+
+  div.info-item {
+    display: flex;
+    column-gap: 10px;
+  }
+
+
+
+  p.pricevalue {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;    
+  }
+
+  input.numberinput {
+    width: 5em;
+    height: 1.7em;
+  }
+
+  #removebtndiv a i{
+    color: black;
+}
+
+#removebtndiv a:hover i{
+    color: red;
+}
+
+#littleimg .d-flex #removebtndiv{
+  margin-top: 5px;
+}

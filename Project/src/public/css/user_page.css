@@ -1,0 +1,677 @@
+/*________________________edit profile_______________________*/
+
+span.fw-bolder {
+  font-family: 'Blinker';font-size: 16px;
+}
+
+.col-md-4 a.managementbutton {
+  
+  background-color: #212529;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.col-md-4 a.managementbutton:hover {
+  background-color: #6c6d6e;
+}
+
+
+.col-md-4 .managementbuttons{
+  text-align: center;
+  height: 4em;
+  
+}
+
+.col-md-4 #uinfo {
+  margin-bottom: 4em;
+  margin-left: 1em;
+  text-align: start;
+}
+
+.col-md-4 .profile_img{
+    width: 10em;
+}
+
+.col-md-4 .position-sticky{
+    text-align: center;
+    top: 10px;    
+}
+
+#userinformation {
+    margin-top: 1em;
+}
+
+#first_hide {
+  display: none;
+}
+
+.productUserProfile .cart-item .col-xl-10 .separatebtns .text-center a{
+  background-color:rgb(243, 243, 243);
+  color: rgb(86, 85, 85);
+  transition: all 0.2s ease;
+  padding: 2px 6px;
+  border: none;
+  margin-top: 1em;
+}
+
+.productUserProfile .cart-item .col-xl-10 .separatebtns .text-center a:hover{
+  background-color:#212529;
+  color: aliceblue;
+
+}
+
+#greenbtn {
+  background-color: #232323;
+  color: white;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  font-size: 18px;
+  padding: 8px;
+  float: right;
+  margin-right: 10px;
+}
+
+#greenbtn:hover {
+  background-color: #8be48b;
+}
+
+#redbtn, #nostock {
+  background-color: #232323;
+  color: white;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  font-size: 18px;
+  padding: 8px;
+  float: right;
+}
+
+#redbtn:hover {
+  background-color: #ef7f7f;
+}
+
+.listingAdminProfile{
+  text-decoration: none;
+  color:black;
+}
+
+@media screen and (max-width: 770px) {
+
+  .hidep{
+    display: none;
+  }
+
+  #first_hide{
+    display: block;
+  }
+
+  .col-md-4 #uinfo {
+    margin-left: 10em;
+  }
+
+  
+}
+
+
+
+/*_________________________Purchase History______________________*/
+
+main.all {
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+div.row#userinformation #showInformationProfile #selectInformation {
+  padding-left: 0;
+}
+
+div.row#userinformation #showInformationProfile #selectInformation button#histPurchBtn{
+  border-radius: 5px 5px 0 0;
+  border: #ddd solid;
+  margin-left: 0;
+  padding: 3px 10px;
+  font-size: 19px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #ddd;
+}
+
+div.row#userinformation #showInformationProfile #selectInformation button#histRevBtn{
+  border-radius: 5px 5px 0 0;
+  border: #ddd solid;
+  margin-left: 0;
+  padding: 3px 10px;
+  font-size: 19px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ div.row#userinformation #showInformationProfile .info ul:first-child {
+  border: #ddd solid;
+  border-radius: 0 5px 5px 5px;
+  margin-top: 0;
+  padding-bottom: 2em;
+  width: 100%;
+}
+
+ div.row#userinformation #showInformationProfile .info ul .purchase_history_container {
+  margin-right: 10px;
+}
+
+div.row#userinformation #showInformationProfile .info ul .boxtitle {
+  margin-top: 1em;
+  font-size: 28px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-shadow: 1px 1px 1px #ababab;
+  margin-bottom: .5em;
+}
+
+.purchase_history_container .purchaseUserProfile p , .reviewsContainer .reviewUserProfile p {
+  margin-bottom: 0;
+}
+
+.purchase_history_container .purchaseUserProfile header, .reviewsContainer .reviewUserProfile header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  background-color: rgb(240, 240, 240);
+  padding: 10px;
+  border-radius: 5px;
+  column-gap: 20px;
+  padding: 1em;
+  align-items: center;
+}
+
+div.purchase_history_container div.purchDate,
+div.reviewsContainer div.purchDate {
+  grid-row-start: 1;
+  grid-row-end: 4;
+  text-align: center;
+  background-color: white;
+  color: #212529;
+  border-radius: 5px;
+  width: 6.5em;  
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+div.purchase_history_container div.purchDate p,
+div.reviewsContainer div.purchDate p {
+  display: flex;
+  margin: auto;
+}
+
+div.purchase_history_container div.purchDate p:first-child,
+div.reviewsContainer div.purchDate p:first-child {
+  margin-bottom: 2px;
+}
+
+div.purchase_history_container div.purchDate p#purchDateID,
+div.reviewsContainer div.purchDate p#purchDateID {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+span.purchPriceID{
+  font-family: 'Arya';
+  font-size: 18px;
+}
+span.purchStatusID{
+  font-family: 'Blinker';
+  font-size: 15px;
+  margin-top: 3px;
+  margin-left: 4px;
+}
+
+.purchase_history_container .purchaseUserProfile header .purchStatus {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: flex;
+  height: 20px;
+  align-items: center;
+}
+
+div.purchase_history_container p.expand {
+  grid-column-start: 3;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  height: 100%;
+}
+div.purchase_history_container button.expandProds {
+  background-color: white;
+  color:rgb(187, 182, 182);
+  transition: all 0.3s ease;
+  border: #ddd solid;
+  border-width: 2px;
+  border-radius: 8px;
+  font-family: 'Arya';
+  font-size: 13px;
+  height: 100%;
+  width: 4em;
+  padding: 0;
+  float: right;
+  
+}
+
+div.purchase_history_container button.expandProds:hover {
+  background-color: #515356;
+  color: aliceblue;
+  border: aliceblue solid;
+  border-width: 2px;
+}
+
+
+div.purchase_history_container div#cancelOrderContainer{
+  grid-column-start: 2;
+  grid-column-end: 3; 
+}
+
+div.purchase_history_container div#cancelOrderContainer a {
+  background-color: rgb(240, 186, 186); 
+  padding: 3px 6px;
+  transition: all 0.3s ease; 
+  margin-top: 1em;
+  border: white solid;
+  border-width: 1px;
+  color: white;
+  font-size: 15px;
+  font-family:'Times New Roman', Times, serif;
+  margin-bottom: 0.8em;
+}
+
+div.purchase_history_container div#cancelOrderContainer a:hover {
+  background-color: rgb(251, 34, 77);  
+  color: aliceblue;
+  border: #212529 solid;
+  border-width: 1px;
+}
+
+.purchase_history_container .purchaseUserProfile .productUserProfile, .reviewsContainer .reviewUserProfile .productUserProfile {
+  margin-left: 4em;
+  display: none;
+}
+
+.purchase_history_container .purchaseUserProfile hr.stay, .reviewsContainer .reviewUserProfile hr.stay {
+  display: none;
+}
+
+.purchase_history_container .purchaseUserProfile .cart-item, .reviewsContainer .reviewUserProfile .cart-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.purchase_history_container .purchaseUserProfile .cart-item .col-xl-2, .reviewsContainer .reviewUserProfile .cart-item .col-xl-2  {
+  flex: 1;
+}
+
+.purchase_history_container .purchaseUserProfile .cart-item .col-xl-10, .reviewsContainer .reviewUserProfile .cart-item .col-xl-10 {
+  flex: 4;
+} 
+
+.purchase_history_container .purchaseUserProfile .cart-item .col-xl-2#todeletepadd, .reviewsContainer .reviewUserProfile .cart-item .col-xl-2#todeletepadd{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+p.cheating {
+  grid-column-start: 3;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  height: 100%;
+  visibility: hidden;
+
+}
+
+@media screen and (max-width: 900px) {
+  
+  .productUserProfile .cart-item .col-xl-10 .separatebtns .text-center a{
+    font-size: 10px;
+  }
+
+}
+
+@media screen and (max-width: 1000px) {
+  
+  div.row#userinformation #showInformationProfile .info ul header {
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 870px) {
+  
+  .purchase_history_container .purchaseUserProfile header .purchStatus, span.purchStatusID{
+    font-size: 11px;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  
+  .purchase_history_container .purchaseUserProfile header .purchStatus, span.purchStatusID{
+    font-size: 15px;
+  }
+
+}
+
+@media screen and (max-width: 630px) {
+  
+  div.row#userinformation #showInformationProfile .info ul .purchase_history_container .purchaseUserProfile header,
+  div.row#userinformation #showInformationProfile .info ul .reviewsContainer .reviewUserProfile header {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 5px;
+    padding: 1em;
+    align-items: center;
+    width: 100%;
+    position: relative;
+  }
+  
+  div.row#userinformation #showInformationProfile .info ul .purchase_history_container .purchaseUserProfile header .purchStatus,
+  div.row#userinformation #showInformationProfile .info ul .purchase_history_container .purchaseUserProfile header .purchPrice,
+  div.row#userinformation #showInformationProfile .info ul .purchase_history_container .purchaseUserProfile header div#cancelOrderContainer a{
+    margin-left: 10px;
+  }
+
+  div.row#userinformation #showInformationProfile .info ul .purchase_history_container .purchaseUserProfile header .purchPrice,
+  div.row#userinformation #showInformationProfile .info ul .purchase_history_container .purchaseUserProfile header .purchStatus {
+    margin-bottom: 0.9em;
+  }
+
+  
+  div.row#userinformation #showInformationProfile .info ul .purchase_history_container .purchaseUserProfile header .expandProds {
+    margin-top: 0.3em;
+  }
+
+
+
+
+  div.row#userinformation #showInformationProfile .info ul .purchase_history_container .purchaseUserProfile header div.purchDate,
+  div.row#userinformation #showInformationProfile .info ul .reviewsContainer .reviewUserProfile header div.purchDate {
+    display: flex;
+    column-gap: 10px;
+    text-align: start;
+    background-color: rgb(240, 240, 240);;
+    color: #212529;
+    border-radius: 5px;
+    padding: 0;
+    width: 8em;  
+    margin-left: 7px;
+    margin-top: 7px;
+    margin-bottom: 15px;
+  }
+
+  div.row#userinformation #showInformationProfile .info ul .purchase_history_container .purchaseUserProfile header div.purchDate p#purchDateID,
+  div.row#userinformation #showInformationProfile .info ul .reviewsContainer .reviewUserProfile header div.purchDate p#purchDateID {
+    margin-top: 4px;
+  }
+
+
+}
+
+
+/*______________________________admin_________________________________*/
+
+div.row div.col-md-8 p.user_names {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+ div.row div.col-md-8 p.user_names a {
+  display: block;
+  padding: 5px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+div.row div.col-md-8 p.user_names a:hover {
+  color: #ddd;
+}
+
+ div.row div.col-md-8 p.user_names:hover {
+  background-color: #212529;
+}
+
+
+
+
+div.row#userinformation #showInformationProfile #selectInformation button#adminHistUsersBtn{
+  border-radius: 5px 5px 0 0;
+  border: #ddd solid;
+  margin-left: 0;
+  padding: 3px 10px;
+  font-size: 19px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #ddd;
+}
+
+div.row#userinformation #showInformationProfile #selectInformation button#adminHistRevBtn,
+div.row#userinformation #showInformationProfile #selectInformation button#adminHistPurchBtn {
+  border-radius: 5px 5px 0 0;
+  border: #ddd solid;
+  margin-left: 0;
+  padding: 3px 10px;
+  font-size: 19px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+div.row#userinformation #showInformationProfile .info .usersContainer ul {
+  padding-bottom: .5em;
+}
+
+div.row#userinformation #showInformationProfile .info .usersContainer li a {
+  display:inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-size: 17px;
+  font-family: 'Blinker';
+}
+
+div.row#userinformation #showInformationProfile .info .usersContainer li a:hover {
+  color: #ababab;
+  font-size: 20px;
+}
+
+div.row#userinformation #showInformationProfile .info ul .purchasesContainer .purchaseUserProfile header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr ;
+  background-color: rgb(240, 240, 240);
+  padding: 10px;
+  border-radius: 5px;
+  column-gap: 20px;
+  padding: 1em;
+  align-items: center;
+}
+
+div.row#userinformation #showInformationProfile .info ul .purchasesContainer .purchaseUserProfile header .purchStatus, 
+div.row#userinformation #showInformationProfile .info ul .purchasesContainer .purchaseUserProfile header .purchPrice {
+  grid-column-start: 2;
+  grid-column-end: 4;
+
+}
+
+div.row#userinformation #showInformationProfile .info ul .purchasesContainer .purchaseUserProfile header div.purchDate,
+div.row#userinformation #showInformationProfile .info ul .reviewsContainer .reviewUserProfile header div.purchDate {
+  grid-row-start: 2;
+  grid-row-end: 4;
+  text-align: center;
+  background-color: white;
+  color: #212529;
+  border-radius: 5px;
+  width: 8em;  
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+div.row#userinformation #showInformationProfile .info ul .purchasesContainer .purchaseUserProfile header div.purchDate p,
+div.row#userinformation #showInformationProfile .info ul .reviewsContainer .reviewUserProfile header div.purchDate p {
+  display: flex;
+  margin: auto;
+}
+
+div.row#userinformation #showInformationProfile .info ul .purchasesContainer .purchaseUserProfile header div.purchDate p:first-child,
+div.row#userinformation #showInformationProfile .info ul .reviewsContainer .reviewUserProfile header div.purchDate p:first-child {
+  margin-bottom: 2px;
+}
+
+div.row#userinformation #showInformationProfile .info ul .purchasesContainer .purchaseUserProfile header div.purchDate p#purchDateID,
+div.row#userinformation #showInformationProfile .info ul .reviewsContainer .reviewUserProfile header div.purchDate p#purchDateID {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+div.row#userinformation #showInformationProfile .info ul .purchasesContainer .purchaseUserProfile header p.user_name,
+div.row#userinformation #showInformationProfile .info ul .reviewsContainer .reviewUserProfile header p.user_name {
+  text-align: center;
+}
+
+div.row#userinformation #showInformationProfile .info ul .purchasesContainer .purchaseUserProfile header p.user_name a,
+div.row#userinformation #showInformationProfile .info ul .reviewsContainer .reviewUserProfile header p.user_name a{
+  color: #212529;
+  text-decoration: none;
+  font-size: 18px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  transition: all 0.3s ease;
+}
+
+div.row#userinformation #showInformationProfile .info ul .purchasesContainer .purchaseUserProfile header p.user_name a:hover,
+div.row#userinformation #showInformationProfile .info ul .reviewsContainer .reviewUserProfile header p.user_name a:hover{
+  color: #515356;
+  font-size: 21px;
+}
+
+select::-ms-expand {
+  display: none;
+}
+select {
+  width: 10em;
+  border: none;
+  padding: 2px 6px 2px 6px;
+  border-radius: 5px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: 1ex;
+  background-origin: content-box;
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgdmVyc2lvbj0iMS4xIgogICBpZD0ic3ZnMiIKICAgdmlld0JveD0iMCAwIDM1Ljk3MDk4MyAyMy4wOTE1MTgiCiAgIGhlaWdodD0iNi41MTY5Mzk2bW0iCiAgIHdpZHRoPSIxMC4xNTE4MTFtbSI+CiAgPGRlZnMKICAgICBpZD0iZGVmczQiIC8+CiAgPG1ldGFkYXRhCiAgICAgaWQ9Im1ldGFkYXRhNyI+CiAgICA8cmRmOlJERj4KICAgICAgPGNjOldvcmsKICAgICAgICAgcmRmOmFib3V0PSIiPgogICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2Uvc3ZnK3htbDwvZGM6Zm9ybWF0PgogICAgICAgIDxkYzp0eXBlCiAgICAgICAgICAgcmRmOnJlc291cmNlPSJodHRwOi8vcHVybC5vcmcvZGMvZGNtaXR5cGUvU3RpbGxJbWFnZSIgLz4KICAgICAgICA8ZGM6dGl0bGU+PC9kYzp0aXRsZT4KICAgICAgPC9jYzpXb3JrPgogICAgPC9yZGY6UkRGPgogIDwvbWV0YWRhdGE+CiAgPGcKICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjAyLjAxNDUxLC00MDcuMTIyMjUpIgogICAgIGlkPSJsYXllcjEiPgogICAgPHRleHQKICAgICAgIGlkPSJ0ZXh0MzMzNiIKICAgICAgIHk9IjYyOS41MDUwNyIKICAgICAgIHg9IjI5MS40Mjg1NiIKICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjQwcHg7bGluZS1oZWlnaHQ6MTI1JTtmb250LWZhbWlseTpzYW5zLXNlcmlmO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MXB4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIj48dHNwYW4KICAgICAgICAgeT0iNjI5LjUwNTA3IgogICAgICAgICB4PSIyOTEuNDI4NTYiCiAgICAgICAgIGlkPSJ0c3BhbjMzMzgiPjwvdHNwYW4+PC90ZXh0PgogICAgPGcKICAgICAgIGlkPSJ0ZXh0MzM0MCIKICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTo0MHB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6Rm9udEF3ZXNvbWU7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpGb250QXdlc29tZTtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjFweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIj4KICAgICAgPHBhdGgKICAgICAgICAgaWQ9InBhdGgzMzQ1IgogICAgICAgICBzdHlsZT0iZmlsbDojMzMzMzMzO2ZpbGwtb3BhY2l0eToxIgogICAgICAgICBkPSJtIDIzNy41NjY5Niw0MTMuMjU1MDcgYyAwLjU1ODA0LC0wLjU1ODA0IDAuNTU4MDQsLTEuNDczMjIgMCwtMi4wMzEyNSBsIC0zLjcwNTM1LC0zLjY4MzA0IGMgLTAuNTU4MDQsLTAuNTU4MDQgLTEuNDUwOSwtMC41NTgwNCAtMi4wMDg5MywwIEwgMjIwLDQxOS4zOTM0NiAyMDguMTQ3MzIsNDA3LjU0MDc4IGMgLTAuNTU4MDMsLTAuNTU4MDQgLTEuNDUwODksLTAuNTU4MDQgLTIuMDA4OTMsMCBsIC0zLjcwNTM1LDMuNjgzMDQgYyAtMC41NTgwNCwwLjU1ODAzIC0wLjU1ODA0LDEuNDczMjEgMCwyLjAzMTI1IGwgMTYuNTYyNSwxNi41NDAxNyBjIDAuNTU4MDMsMC41NTgwNCAxLjQ1MDg5LDAuNTU4MDQgMi4wMDg5MiwwIGwgMTYuNTYyNSwtMTYuNTQwMTcgeiIgLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPgo=");
+}
+
+
+
+div.deleteReview input.delReviewbtn {
+  background-color: #cc0000;
+  color: white;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  font-size: 18px;
+  padding: 8px;
+  float: right;
+}
+
+div.deleteReview input.delReviewbtn:hover {
+  background-color: #ff0000;
+}
+
+div.editReview input.editReviewbtn {
+  color: white;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  font-size: 18px;
+  padding: 8px;
+  float: right;
+}
+
+div.editReview input.editReviewbtn:hover {
+
+}
+
+.reviewStuff {
+  font-size: 17px;
+}
+
+.reviewStuff .reviewProduct {
+  font-weight: bold;
+}
+
+.reviewRatingStars > * {
+  display: inline-block;
+}
+
+#reviewRating {
+  margin-right: 10px;
+}
+
+.productReview {
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+}
+
+
+
+.container .notifications {
+  margin: 10px;
+  display: flex;
+}
+
+.notifications #checkoutbtn {
+margin-left: 10px;
+}
+
+
+@media screen and (max-width: 900px) {
+
+  div.row#userinformation #showInformationProfile .info ul .purchasesContainer .purchaseUserProfile header {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 5px;
+    padding: 1em;
+    align-items: center;
+  }
+  
+  div.row#userinformation #showInformationProfile .info ul .purchasesContainer .purchaseUserProfile header .purchStatus{
+    margin-left: 10px;
+  }
+  div.row#userinformation #showInformationProfile .info ul .purchasesContainer .purchaseUserProfile header .purchPrice {
+    margin-left: 10px;
+  }
+  
+  div.row#userinformation #showInformationProfile .info ul .purchasesContainer .purchaseUserProfile header div.purchDate,
+  div.row#userinformation #showInformationProfile .info ul .reviewsContainer .userReviews .reviewUserProfile header div.purchDate {
+    display: flex;
+    column-gap: 10px;
+    text-align: start;
+    background-color: rgb(240, 240, 240);;
+    color: #212529;
+    border-radius: 5px;
+    padding: 0;
+    width: 8em;  
+    margin-left: 7px;
+    margin-top: 7px;
+    margin-bottom: 15px;
+  }
+
+  div.row#userinformation #showInformationProfile .info ul .purchasesContainer .purchaseUserProfile header div.purchDate p#purchDateID,
+  div.row#userinformation #showInformationProfile .info ul .reviewsContainer .reviewUserProfile header div.purchDate p#purchDateID {
+    margin-top: 4px;
+  }
+
+  div.row#userinformation #showInformationProfile .info ul .purchasesContainer .purchaseUserProfile header {
+    width: 100%;
+  }
+
+  .reviewUserProfile #reviewID {
+    width: 100%;
+  }
+  
+  .reviewUserProfile .user_name {
+    text-align: center;
+  }
+
+}

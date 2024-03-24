@@ -1,0 +1,1 @@
+<p class=" font-normal"><a href="{{ url('/products/subcategory/'.$subcategory->id) }}">{{$subcategory->name}}</a></p>

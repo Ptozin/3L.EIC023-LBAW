@@ -1,0 +1,94 @@
+
+.prod4review{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.prod4review .shopping-cart-item{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    padding: 2em;
+    text-align: center;
+}
+.prod4review .shopping-cart-item #littleimg{
+    text-align: center;
+    padding-bottom: 2em;
+    margin-top: 2em;
+}
+.prod4review .shopping-cart-item #littleimg img {
+    width: 20em;
+}
+
+.prod4review .shopping-cart-item #prodspecif {
+    margin-bottom: 4em;
+}
+
+
+.makeReview {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    display: grid;
+    grid-template-columns: auto;
+    text-align: center;
+    min-width: 650px;
+    padding: 2em;
+    box-shadow: 10px 10px 15px rgb(0 0 0 / 10%);
+}
+
+.makeReview h3 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.makeReview #rating {
+    margin-bottom: 30px;
+}
+
+.makeReview .commentBox {
+    height: 4em;
+    text-align: top;
+}
+
+div.makeReview input.postReviewbtn {
+    background-color: #212529;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+div.makeReview input.postReviewbtn:hover {
+    background-color: #6c6d6e;
+}
+
+div.makeReview input.delReviewbtn {
+    background-color: #cc0000;
+    
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+div.makeReview input.delReviewbtn:hover {
+    background-color: #ff0000;
+}
+
+div.reviewBtns input {
+    display: inline-block;
+}
+
+@media screen and (max-width: 680px) {
+    .prod4review {
+        display: inline-block;
+    }
+    .reviewForm{
+        text-align: center;
+    }
+    
+  }

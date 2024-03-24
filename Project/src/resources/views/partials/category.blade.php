@@ -1,0 +1,1 @@
+<a class="py-5 px-5 mx-2 my-2" href="{{ url('products/category/'.$category->id) }}">{{$category->name}}</a>

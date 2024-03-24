@@ -1,0 +1,204 @@
+
+/*_____________________HEADER_____________________*/
+
+#cartform button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #wishlistform button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #wishlistform .text4emoji {
+    margin-left: 4px;
+  }
+  
+  #cartform .text4emoji {
+    margin-left: 2px;
+  }
+
+  #cartbut {
+    position: relative;
+  }
+
+  #cartbut span{
+    display: flex;
+  }
+
+  #wishlistbut {
+    position: relative;
+  }
+
+  #wishlistbut span{
+    display: flex;
+  }
+  
+  #cartbut .badge, #wishlistbut .badge {
+    position: absolute;
+    top: -7px;
+    right: -6px;
+    padding: 5px 8px;
+    border-radius: 50%;
+    background-color: #212529;
+    color: white;
+  }
+
+  .doblink {
+    animation: blink 3s linear infinite;
+  }
+
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  @media screen and (max-width: 1200px) {
+    .text4emoji {
+      display: none;
+    }
+  
+  }
+  @media screen and (max-width: 991px) {
+  
+    .text4emoji {
+      display: inline-block;
+    }
+  
+     div#centerit.userbuts {
+      width: 100%;
+     }
+  
+     div#centerit.userbuts a {
+      display: block;
+      margin-left: auto;
+      margin-right: auto
+     }
+  
+     div#centerit.userbuts a#username{
+      margin-top: 1em;
+      width: 10em;
+      background-color: #212529;
+      color: white;
+     }
+     div#centerit.userbuts a#username:hover{
+      background-color: #ccc;
+      color: #212529;
+     }
+  
+     div#centerit.userbuts a#log_but{
+      width: 5em;
+      border: none;
+      font-size: 12px;
+      margin-top: 5px;
+     }
+  
+     #navbarSupportedContent {
+      position: relative;
+     }
+  
+     #search-container {
+      position: absolute;
+      top: 15px;
+      right: 0;
+     }
+  
+     #wishlistform {
+      position: absolute;
+      top: 60px;
+      right: 0;
+     }
+  
+     #cartform{
+      position: absolute;
+      top: 60px;
+      right: 138px;
+     }
+  
+     #cartbut {
+      margin-right: 0;
+     }
+
+     #wishlistbut {
+      margin-right: 0;
+     }
+  
+  
+  }
+  
+  #cartbut{
+    margin-right: 7px;
+  }
+
+  #wishlistbut{
+    margin-right: 7px;
+  }
+  
+  
+  
+  
+  /*__________________SEARCH BAR_____________________*/
+  
+  #search-container {
+    float: right;
+    margin-right: 7px;
+    border-radius: 3px;
+    border: 1px solid #000000;
+    
+  }
+  
+  #search-container input[type=text] {
+    height: 2.2em;
+    border:none;
+  }
+  
+  #search-container button {
+    float: right;
+    border-radius: 3px;
+    height: 35px;
+    background: #ddd;
+    font-size: 17px;
+    border:none;
+    cursor: pointer;
+  }
+  
+  #search-container button:hover {
+    background: #ccc;
+  }
+  
+  
+  
+  
+  /*___________________FOOTER__________________*/
+  
+  .help {
+    display: flex;
+    margin: 1.5em;
+  }
+  
+  .newsletter {
+    flex: 2;
+    margin: auto;
+    text-align: center;
+  }
+  
+  p.m-0 {
+    padding: 0;
+    margin: 0;
+  }
+  
+  ul#help {
+    display:flex;
+    flex-direction: column;
+  }

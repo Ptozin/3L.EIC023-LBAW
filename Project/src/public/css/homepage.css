@@ -1,0 +1,208 @@
+.prodListDivHome{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.categoriesSpace .forflexing {
+    display: flex;    
+}
+.categoriesSpace .forflexing a h6 {
+    text-decoration: none;
+    color: #212529;
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    transition: all .5s;
+}
+.categoriesSpace .forflexing a {
+    position: relative;
+    text-decoration: none;
+    width: 10em;
+    margin-left: 1em;
+}
+.categoriesSpace .forflexing a h6:hover {
+    color: darkgray;
+}
+
+
+.homepageCategories {
+    display: flex;
+    flex-direction: row;
+}
+
+.homepageCategories a{
+    background-color:wheat
+}
+
+.homepageCategories a{
+    text-decoration: none;
+    color: black;
+    display: block;
+    transition: all .5s;
+}
+
+.homepageCategories a:hover{
+    background-color: #212529;
+    color: white;
+}
+
+
+#newSearchCont {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#newSearchCont h3 {
+    padding: 0;
+    margin: 0;
+}
+
+#newSearchCont div {
+    margin-top: 0;
+    margin-bottom: 4em;
+    padding: 0;
+}
+
+
+div.categoriesSpace div#divlinkcat {
+    white-space: nowrap;
+    overflow-x: auto;
+    padding: 1em 0.5em;
+    transition: all .5s;
+}
+
+div.categoriesSpace div#divlinkcat a {
+    text-decoration: none;
+    padding: 10px;
+    margin: 5px; 
+    border-radius: 4%;
+    font-family: "Bungee";
+    font-size: 1.5em;
+}
+
+::-webkit-scrollbar {
+display: none; /* for Chrome, Safari, and Opera */
+}
+
+
+#newSearchCont button {
+  width: 40px;
+  height: 38px;
+  border: 3px solid #212529;
+  background: #212529;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#newSearchCont input {
+    width: 15em;
+    border: 3px solid #212529;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+    height: 2.3em;    
+}
+
+#newSearchCont input:focus {
+    color: #212529;
+}
+
+#newSearchCont {
+    text-align: center;
+}
+
+div.productsListHome div.grid-containerProd {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+div.productsListHome div.grid-containerProd .grid-itemProd {
+    width: 100%;
+}
+
+
+
+@media screen and (max-width: 1100px) {
+  
+    div.productsListHome div.grid-containerProd {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        
+    }
+    
+    div.productsListHome div.grid-containerProd .grid-itemProd h6.fw-normal {
+        display: none;
+    }
+  }
+
+
+  @media screen and (max-width: 830px) {
+  
+    div.productsListHome div.grid-containerProd {
+        display: grid;
+        grid-template-columns: auto auto;
+        
+    }
+
+  }
+
+  @media screen and (max-width: 620px) {
+  
+    div.productsListHome div.grid-containerProd {
+        display: inline-block;
+    }
+
+  }
+
+  .productname{
+    font-family: "Changa";
+    font-size: 17px;
+  }
+
+  .shortDesc{
+    font-family: "Changa";
+    font-size: 11px;
+  }
+
+ h5.alert3 {
+    font-size: 13px;
+    background-color: rgba(245, 245, 220, 0.639);
+  }
+
+  h5.alert1 {
+    font-size: 13px;
+    background-color: rgba(212, 254, 230, 0.39);
+  } 
+  
+  h5#alert2 {
+    font-size: 13px;
+    background-color: rgba(254, 214, 212, 0.39);
+  }
+
+  .imgdetails:hover  {
+    opacity: 0.5;
+  }
+
+ .imgcont1 {
+    position:relative;
+    padding: 0;
+ }
+
+ .imgcont2 {
+    width: 100%;
+ }
+
+.prodprice {
+    font-family: "Bungee";
+    margin-top: 1.2em;
+}

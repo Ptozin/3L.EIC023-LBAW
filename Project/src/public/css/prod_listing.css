@@ -1,0 +1,235 @@
+.prodListDiv{
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: auto auto ;
+}
+
+.dropbtn {
+    display: none;
+}
+
+
+.divfordropdown .bg-background-off {
+    background-color: #ddd;
+    width: 100%;
+    color: black;
+    max-width: fit-content;
+    text-align: center;
+    margin-bottom: 10px;
+    
+}
+
+div #diffall.divfordropdown .asideProdList p:nth-of-type(1) {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+.py-4 div#catproddiv div.divfordropdown .bg-background-off h3 {
+    padding-top: 1.5rem!important;
+}
+
+div.divfordropdown {
+    max-width: 20em;
+    margin-right: 1em;
+}
+
+.py-4 #header{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    display: grid;
+    grid-template-columns: auto auto;
+    
+}
+.py-4 #header .ps-1 a#categoriesDropdown, .py-4 #header .ps-1 ul#categoriesDropdownUL {
+    float: right;
+}
+
+section.py-4 {
+    margin-right: 3rem!important;
+    margin-left: 3rem!important;
+}
+
+
+.prodListDiv .asideProdList a{
+    text-decoration: none;
+    color: rgb(113, 111, 111);
+}
+
+.prodListDiv .asideProdList a:hover{
+    color: black;
+}
+
+
+div.prodListDiv div.productsList div.grid-containerProd{
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+
+}
+div.prodListDiv div.productsList div.grid-containerProd div.grid-itemProd {
+    width: 100%;
+}
+
+.asideProdList{
+    margin-top: 15px;
+    padding-bottom: 1em;
+}
+
+div.productsList div.grid-containerProd.row {
+    --bs-gutter-x: 1rem;
+}
+
+
+@media screen and (max-width: 1140px) {
+  
+    div.prodListDiv div.productsList div.grid-containerProd {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        
+    }
+    
+    div.prodListDiv div.productsList div.grid-containerProd div.grid-itemProd h6.fw-normal {
+        display: none;
+    }
+  }
+
+  @media screen and (max-width: 990px) {
+  
+    div.prodListDiv div.productsList div.grid-containerProd {
+        display: grid;
+        grid-template-columns: auto auto;
+        
+    }
+  
+  }
+  
+
+  @media screen and (max-width: 900px) {
+
+    div.divfordropdown {
+        max-width: 100%;
+        margin-right: 0;
+    }
+  
+    div.prodListDiv div.productsList div.grid-containerProd {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        
+    }
+
+    .prodListDiv{
+        margin-top: 15px;
+        display: inline-block;
+        text-align: center;
+    }
+
+
+    .py-4 #header{
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .py-4 #header .ps-1{
+        text-align: start;
+    }
+
+    .dropbtn {
+        background-color: #212529;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        display: inline;
+        width: 100%;
+      }
+      
+      .divfordropdown {
+        position: relative;
+        display: block;
+      }
+      
+      .asideProdList {
+        display: none;
+        background-color: #f1f1f1;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      
+      .asideProdList a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      
+      .asideProdList a:hover {background-color: #ddd;}
+      
+      .divfordropdown:hover .asideProdList {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        width: 100%;
+        text-align: center;
+
+      }
+
+      .divfordropdown .bg-background-off {
+        max-width: 100%;
+        width: 100%;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        background-color: #212529;
+        color: white;
+    }
+      
+      .divfordropdown:hover .dropbtn {
+        background-color: #ddd;
+        color: black;
+        width: 100%;
+    }
+
+    .asideProdList p {
+        margin-bottom: 0;
+        padding: 1em;
+    }
+    
+
+  }
+
+  @media screen and (max-width: 630px) {
+  
+    div.prodListDiv div.productsList div.grid-containerProd {
+        grid-template-columns: auto auto;
+    }
+
+    .divfordropdown:hover .asideProdList {
+        display: grid;
+        grid-template-columns: auto auto;
+        width: 100%;
+        text-align: center;
+
+      }
+
+      .divfordropdown .bg-background-off {
+        max-width: 100%;
+        width: 100%;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+  }
+
+  @media screen and (max-width: 530px) {
+  
+    div.prodListDiv div.productsList div.grid-containerProd {
+        display: inline-block;
+    }
+
+
+  }
+
+  .py-4 #header h3.pe-1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+

@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Models;
+
+use Eloquent as Model;
+
+class ProductImage extends Model
+{
+    public $table = 'product_image';
+
+    // Don't add create and update timestamps in database.
+    public $timestamps  = false;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [ 
+        'url'
+    ];
+
+    /**
+    * The product variation this image belongs to
+    */
+    public function product_variation() {
+        return $this->belongsTo('App\Models\ProductVariation', 'product_variation_id');
+    }
+}

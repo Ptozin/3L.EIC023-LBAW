@@ -1,0 +1,115 @@
+/*__________________STATIC PAGES___________________*/
+
+.information, .contact_information {
+    display: flex;
+  
+  }
+  
+  .about_img {
+    flex: 1;
+    padding: 5em;
+    width: 30em;
+    max-height: 30em;
+  }
+  
+  .description, .contact_description {
+    flex: 3;
+    padding: 1em;
+    margin-top: 5em;
+    margin-right: 5em;
+  }
+  
+  @media screen and (max-width: 1000px) {
+    .information {
+      width: 100%;
+      display: block;
+      text-align: center;
+    }
+  
+    .about_img{
+      margin-bottom: 1em;
+      padding-bottom: 0;
+    }
+    .description{
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: 3em;
+      margin-right: 3em;
+      padding: 3em;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    .information {
+      width: 100%;
+      display: block;
+      text-align: center;
+    }
+  
+    .about_img{
+      
+      margin-bottom: 1em;
+      padding-bottom: 0;
+    }
+    .description{
+      margin: 0;
+      padding: 3em;
+    }
+  }
+  
+  
+  @media screen and (max-width: 1000px) {
+  
+    .information {
+      width: 100%;
+      display: block;
+      text-align: center;
+    }
+  
+    .about_img{
+      margin-bottom: 1em;
+      padding-bottom: 0;
+    }
+  
+    .description > p{
+      margin-bottom: 2em;
+  
+    }
+  }
+  
+  .contact{
+    margin-bottom: 1em;
+  }
+  .email {
+    margin-top: 20px;
+  }
+  
+  @media screen and (max-width: 800px) {
+    .contact_information {
+      width: 100%;
+      display: block;
+      text-align: center;
+    }
+  
+    .about_img{
+      margin-bottom: 1em;
+      padding-bottom: 0;
+    }
+  
+    .contact_description{
+      margin: 0;
+      padding: 3em;
+    }
+  }
+  
+  .pay  {
+    margin-bottom: 2em;
+  }
+  .payment {
+    margin-bottom: 1em;
+  }
+  
+  .mb_note {
+    font-size: small;
+  }
+  

@@ -1,0 +1,1 @@
+<p class="px-3 font-normal"><a href="{{ url('/products/subcategory/'.$subcategory->id) }}">{{$subcategory->name}} ({{count($subcategory->products)}})</a></p>
